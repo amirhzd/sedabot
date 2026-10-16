@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+*.py[cod]
+build/
+dist/
+*.spec.bak
+config.json
+history.json
+sayit.log
+models/
+bin/
+*.wav
+.pytest_cache/
+.idea/
+.grok/
+.claude/
+.kimi/

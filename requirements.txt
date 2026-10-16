@@ -1,0 +1,8 @@
+piper-tts>=1.8.0,<2
+customtkinter>=5.2.0
+pyperclip>=1.8.2
+pygame>=2.5.0
+requests>=2.31.0
+pystray>=0.19.5
+pillow>=10.0.0
+onnxruntime>=1.19
