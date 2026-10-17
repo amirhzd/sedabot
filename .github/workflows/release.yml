@@ -13,6 +13,8 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-python@v5
         with:
@@ -41,6 +43,21 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         shell: bash
         run: |
+          cp .github/release-notes.md notes.md
+          prev=$(git tag --sort=-version:refname | grep -vx "$GITHUB_REF_NAME" | head -n1 || true)
+          {
+            echo
+            echo "### What's changed"
+            echo
+            if [ -n "$prev" ]; then
+              git log --no-merges --pretty=format:'- %s' "$prev"..HEAD
+              echo
+              echo
+              echo "Full changelog: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/compare/$prev...$GITHUB_REF_NAME"
+            else
+              git log --no-merges --pretty=format:'- %s' HEAD
+            fi
+          } >> notes.md
           gh release create "$GITHUB_REF_NAME" dist/Sedabot.exe \
             --title "Sedabot $GITHUB_REF_NAME" \
-            --notes-file .github/release-notes.md
+            --notes-file notes.md
