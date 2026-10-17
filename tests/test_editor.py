@@ -363,6 +363,35 @@ class SpeakTabTests(unittest.TestCase):
                 paths.history.write_bytes(before_hist)
                 self.fail("opening the editor wrote history.json")
 
+    def test_escape_stops_playback_outside_the_editor(self):
+        from voices import resolve_paths
+
+        paths = resolve_paths()
+        before_cfg = paths.config.read_bytes() if paths.config.is_file() else None
+        before_hist = paths.history.read_bytes() if paths.history.is_file() else None
+        from sayit import SayItApp
+
+        app = None
+        try:
+            app = SayItApp(autoload=False, hotkeys=False, tray=False)
+            app.update()
+            calls = []
+            app.stop_playback = lambda: calls.append("stop")
+            app.status.focus_set()
+            app.event_generate("<Escape>")
+            app.update()
+            self.assertEqual(calls, ["stop"])
+        finally:
+            if app is not None:
+                app._quitting = True
+                app.destroy()
+            if before_cfg is not None and paths.config.read_bytes() != before_cfg:
+                paths.config.write_bytes(before_cfg)
+                self.fail("the Escape test wrote config.json")
+            if before_hist is not None and paths.history.read_bytes() != before_hist:
+                paths.history.write_bytes(before_hist)
+                self.fail("the Escape test wrote history.json")
+
     def test_the_keystroke_retag_is_gone(self):
         source = (ROOT / "sayit.py").read_text(encoding="utf-8")
         self.assertNotIn("_apply_rtl", source)

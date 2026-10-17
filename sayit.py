@@ -223,6 +223,10 @@ class SayItApp(ctk.CTk):
         self._build_voices_tab(self.tabs.tab("Voices"))
         self._build_settings_tab(self.tabs.tab("Settings"))
 
+        # Esc stops playback wherever focus is inside the window. The text
+        # editor handles Esc itself when it has the keyboard focus.
+        self.bind_all("<Escape>", self._on_escape, add="+")
+
         self.progress = ctk.CTkProgressBar(self)
         self.progress.set(0)
         self.progress.grid(row=2, column=0, sticky="ew", padx=16, pady=(0, 4))
@@ -469,6 +473,18 @@ class SayItApp(ctk.CTk):
             wraplength=760,
         )
         self.narration_label.grid(row=12, column=0, columnspan=2, sticky="ew", padx=8, pady=(0, 8))
+
+    def _on_escape(self, _event=None):
+        if self._quitting:
+            return
+        try:
+            focused = self.focus_get()
+        except Exception:
+            focused = None
+        if focused is not None and str(focused).startswith(str(self.text_box)):
+            # The editor's own Esc handler fires too; stopping twice is harmless.
+            return
+        self.stop_playback()
 
     def _voice_names(self) -> list[str]:
         extras = self.config.get("extra_voices") or []
