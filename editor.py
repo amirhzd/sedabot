@@ -22,7 +22,7 @@ PAPER = "#fffdf8"
 INK = "#1c1916"
 EDGE = "#d4cdc0"
 FONT_NAME = "Tahoma"
-FONT_TWIPS = 16 * 20
+FONT_TWIPS = 14 * 20
 TEXT_LIMIT = 1_000_000
 _MARGIN = 16
 
