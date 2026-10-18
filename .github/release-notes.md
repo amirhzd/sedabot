@@ -2,7 +2,7 @@ Local Persian text-to-speech for Windows. Everything runs on your own PC — the
 
 ### Download
 
-Grab **Sedabot.exe** from the assets below and run it — no installer needed. On first launch it downloads the default Ganji voice (about 63 MB) into a `models` folder next to the exe; after that it works fully offline.
+Grab **Sedabot.exe** from the assets below and run it — no installer needed. On first launch it downloads the default Gyro voice (about 63 MB) into a `models` folder next to the exe; after that it works fully offline.
 
 ### What it does
 
@@ -14,7 +14,7 @@ Grab **Sedabot.exe** from the assets below and run it — no installer needed. O
 
 ### Voices
 
-Ganji is the default. Amir, Ganji Adabi, Gyro, Mana, and Reza/Ibrahim are built in and download once per voice. Any other official [Piper](https://github.com/OHF-Voice/piper1-gpl) voice id can be typed on the Voices tab, or you can drop your own `.onnx` + `.onnx.json` pair into the `models` folder.
+Gyro is the default. Amir, Ganji, Ganji Adabi, Mana, and Reza/Ibrahim are built in and download once per voice. Any other official [Piper](https://github.com/OHF-Voice/piper1-gpl) voice id can be typed on the Voices tab, or you can drop your own `.onnx` + `.onnx.json` pair into the `models` folder.
 
 ### Notes
 

@@ -39,8 +39,8 @@ class VoiceTests(unittest.TestCase):
         ):
             self.assertIn(name, CATALOG)
 
-    def test_default_voice_is_ganji(self):
-        self.assertEqual(DEFAULT_VOICE, "fa_IR-ganji-medium")
+    def test_default_voice_is_gyro(self):
+        self.assertEqual(DEFAULT_VOICE, "fa_IR-gyro-medium")
 
     def test_menu_voices_are_alphabetical(self):
         with tempfile.TemporaryDirectory() as tmp:

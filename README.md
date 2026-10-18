@@ -16,7 +16,7 @@ It is free to use, free to fork, and open for anyone to build on under the [MIT 
 - Command-line tool for scripting and batch conversion to WAV
 - Sits in the system tray so it's always one hotkey away
 
-Speech synthesis uses [Piper](https://github.com/OHF-Voice/piper1-gpl). Ganji is the default voice. The network is used only to download a voice, or the optional `piper.exe` fallback.
+Speech synthesis uses [Piper](https://github.com/OHF-Voice/piper1-gpl). Gyro is the default voice. The network is used only to download a voice, or the optional `piper.exe` fallback.
 
 ## Run
 
@@ -30,16 +30,16 @@ python sayit.py
 
 Or double-click `run.bat` after that install. `setup.py` installs the same requirements.
 
-The first launch downloads Ganji into `models\` (about 63 MB). Later launches of an installed voice work offline. Do not install `onnxruntime-gpu` next to `onnxruntime`.
+The first launch downloads Gyro into `models\` (about 63 MB). Later launches of an installed voice work offline. Do not install `onnxruntime-gpu` next to `onnxruntime`.
 
 ## Voices
 
 | Voice | Id | Source |
 | --- | --- | --- |
 | Amir | `fa_IR-amir-medium` | rhasspy/piper-voices |
-| Ganji (default) | `fa_IR-ganji-medium` | rhasspy/piper-voices |
+| Ganji | `fa_IR-ganji-medium` | rhasspy/piper-voices |
 | Ganji Adabi | `fa_IR-ganji_adabi-medium` | rhasspy/piper-voices |
-| Gyro | `fa_IR-gyro-medium` | rhasspy/piper-voices |
+| Gyro (default) | `fa_IR-gyro-medium` | rhasspy/piper-voices |
 | Mana | `fa_IR-mana-medium` | MahtaFetrat/Mana-Persian-Piper |
 | Reza / Ibrahim | `fa_IR-reza_ibrahim-medium` | rhasspy/piper-voices |
 
@@ -72,7 +72,7 @@ python cli.py --download fa_IR-ganji-medium
 python cli.py --list-voices
 ```
 
-The default voice on the command line is Ganji. Playback uses the wav's sample rate, 22.05 kHz for Piper.
+The default voice on the command line is Gyro. Playback uses the wav's sample rate, 22.05 kHz for Piper.
 
 ## Package a single exe
 

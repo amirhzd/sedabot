@@ -23,7 +23,7 @@ from urllib.parse import urlparse
 
 log = logging.getLogger("sayit.voices")
 
-DEFAULT_VOICE = "fa_IR-ganji-medium"
+DEFAULT_VOICE = "fa_IR-gyro-medium"
 MIN_ONNX_BYTES = 100_000
 
 # Matches piper.download_voices in piper-tts 1.8.0. Imported from that module
